@@ -21,8 +21,13 @@ class Reports extends Component {
                         style={{ width: '950px', position: 'left' }}>
                         <div className="rowC">
                             <p>Reporter Name: {report.first_name+" "+report.last_name}</p>
-                            <p className="tab">{report.report_text}</p>  
-                            <p className='tab'>Report Date: {report.report_date.getDate().toString()+"/"+(report.report_date.getMonth()+1).toString()+"/"+report.report_date.getFullYear().toString()}</p>               
+                            <p style={{
+                                position: 'absolute', left: '300px'
+                            }}>{report.report_text}</p>  
+                            <p style={{
+                                position: 'absolute', left: '750px'
+                            }}>Report Date: {report.report_date.substring(8, 10) + "/" + report.report_date.substring(5, 7) + "/" + report.report_date.substring(0, 4) }
+                            </p>             
                         </div>
                     </Card>
                 </div>

@@ -46,6 +46,7 @@ class ViewManager extends Component{
                                         value={this.state.assign_task_text}
                                         onChange={(e) => this.setState({ assign_task_text: e.target.value })} />
                                         <Calendar dateFormat="dd/mm/yy" 
+                                                  placeholder = "Due Date"
                                                   value={this.state.task_date} 
                                                   onChange={(e) => this.setState({ task_date: e.value })}>
                                         </Calendar>
@@ -84,12 +85,23 @@ class ViewManager extends Component{
                         style={{ width: '550px', position: 'left' }}
                     >
                         <br /><br />
-                        <ln>Name: {this.props.manager.first_name + " " + this.props.manager.last_name}</ln>
+                        <ln style={{
+                            position: 'absolute', left: '300px'
+                        }}>
+                        Name: {this.props.manager.first_name + " " + this.props.manager.last_name}</ln>
                         <br /><br /><br />
-                        <ln>Position: {this.props.manager.position}</ln><br />
+                        <ln style={{
+                            position: 'absolute', left: '300px'
+                        }}>
+                        Position: {this.props.manager.position}</ln><br />
                         <ln>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</ln><br /><br />
-                        {this.props.myManager ? <div><ln>Manager: {this.props.myManager.first_name + " " + this.props.myManager.last_name}   </ln>
+                        {this.props.myManager ? <div><ln style={{
+                            position: 'absolute', left: '300px'
+                        }}>Manager: {this.props.myManager.first_name + " " + this.props.myManager.last_name}   </ln>
                             <Popup trigger={<Button
+                                style={{
+                                    position: 'absolute', left: '550px'
+                                }}
                                 type="report"
                                 label="Report"
                                 className="p-button-raised p-button-rounded" />}

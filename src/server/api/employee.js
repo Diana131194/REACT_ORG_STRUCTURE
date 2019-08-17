@@ -5,8 +5,7 @@ const TaskModel = require('../model/tasks');
 module.exports = (app) => {
 
     app.post('/api/fetchTasks', function(req, res){
-        console.log("this is from fetch tasks :")
-        console.log("this is the name: " + req.body.first_name + " " + req.body.last_name)
+       
         TaskModel.find({first_name: req.body.first_name, last_name: req.body.last_name}, (err, tasks) => {
             if (err) {
                 console.log("error in fetch tasks")

@@ -8,6 +8,8 @@ import ViewManagerActions from '../ViewManager/actions';
 import TasksActions from '../Tasks/actions';
 import { Sidebar } from 'primereact/sidebar';
 import { ScrollPanel } from 'primereact/scrollpanel';
+import '../ViewEmployee/ViewEmployee.css';
+import { Card } from 'primereact/card';
 
 class EmployeeList extends Component {
 
@@ -30,40 +32,61 @@ class EmployeeList extends Component {
         this.state.employees = this.props.employees.map((employee) => {
             return (
                 <div>
-                    <div className="collection-item">
-                        <span><h2 style={{ textAlign: 'center' }}>{employee.first_name + " " + employee.last_name + " -  " + employee.position + "   "} 
+                    <Card className="center"
+                        style={{ width: '1000px', position: 'absolute', left: '200px' }}
+                    >
+                        <div className="rowC">
+                        <h2>{employee.first_name + " " + employee.last_name}</h2> 
+                        <h2 style={{
+                            position: 'absolute', left: '300px'
+                        }}>{employee.position}</h2>
                             <Button
+                            style={{
+                                position: 'absolute', left: '600px', height: '40px'
+                            }}
                             type="view"
                             label="View"
                             className="p-button-raised p-button-rounded"
                             onClick={() => { this.setState({ view_employee: employee, employee_visible: true })
                                              this.props.fetchTasksEventHandler(employee.first_name, employee.last_name)}}
-                        /></h2>
-                        </span>
+                        />
+                        </div>
+                        </Card>
+                    <br /><br /><br /><br /><br /><br />
                     </div>
-                    <br />
-                </div>
+                    
             )
         })
         this.state.managers = this.props.managers.map((manager) => {
             return (
                 <div>
-                    <div className="collection-item">
-                        <span><h2 style={{ textAlign: 'center' }}>{manager.first_name + " " + manager.last_name + " -  " + manager.position + "   "}
+                        <Card className="center"
+                            style={{ width: '1000px', position: 'absolute', left: '200px' }}
+                        >
+                        <div className="rowC">
+                            <h2>{manager.first_name + " " + manager.last_name}</h2>
+                            <h2 style={{
+                                position: 'absolute', left: '300px'
+                            }}>{manager.position}</h2>
                                 <Button
+                                    style={{
+                                        position: 'absolute', left: '600px', height: '40px'
+                                    }}
                                     type="view"
                                     label="View"
                                     className="p-button-raised p-button-rounded"
-                                    onClick={() => { this.setState({ view_manager: manager, manager_visible: true })
-                                                     this.props.fetchSubordinatesEventHandler(manager)
-                                                     this.props.fetchReportsEventHandler(manager.first_name, manager.last_name)}
-                                     }
+                                    onClick={() => {
+                                        this.setState({ view_manager: manager, manager_visible: true })
+                                        this.props.fetchSubordinatesEventHandler(manager)
+                                        this.props.fetchReportsEventHandler(manager.first_name, manager.last_name)
+                                    }
+                                    }
                                 />
-                        </h2>
-                        </span>
+                        </div>
+                        </Card>
+                    <br /><br /><br /><br /><br /><br />
                     </div>
-                    <br />
-                </div>
+               
             )
         })
         return (

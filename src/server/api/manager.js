@@ -5,14 +5,8 @@ let TaskModel = require('../model/tasks')
 module.exports = (app) => {
 
     app.post('/api/fetchSubordinates', function (req, res) {
-        console.log("this is the manager: ")
-        console.log(req.body.manager)
-        console.log("this is the first name: " + req.body.manager.first_name)
-        console.log("this is the last name: " + req.body.manager.last_name)
         ManagerModel.findOne({ first_name: req.body.manager.first_name, last_name: req.body.manager.last_name})
             .then(doc => {
-                console.log("this is doc: ")
-                console.log(doc.subordinates)
                 res.json({subordinates: doc.subordinates})
             })
     })
@@ -34,6 +28,7 @@ module.exports = (app) => {
     })
 
     app.post('/api/fetchReports', function (req, res) {
+      //  ReportModel.remove({}, () => { })
         ReportModel.find({ manager: {first_name: req.body.first_name, last_name: req.body.last_name} }, (err, reports) => {
             if (err) {
                 console.log("error in fetch tasks")
@@ -51,7 +46,6 @@ module.exports = (app) => {
             }
             else {
                 if(managers.length == 0){
-                    console.log("im in else!")
                     var Shimon = new ManagerModel({
                         first_name: 'Shimon',
                         last_name: 'Cohen',

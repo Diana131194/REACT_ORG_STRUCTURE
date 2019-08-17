@@ -32,12 +32,21 @@ class ViewEmployee extends Component {
                                 style={{ width: '550px', position: 'left' }}
                                 >
                                 <br/><br/>
-                                <ln>Name: {this.props.employee.first_name + " " + this.props.employee.last_name}</ln>
+                                <ln style={{
+                                    position: 'absolute', left: '300px'
+                                }}>Name: {this.props.employee.first_name + " " + this.props.employee.last_name}</ln>
                                 <br/><br/><br/>
-                                <ln>Position: {this.props.employee.position}</ln><br />
+                                <ln style={{
+                                    position: 'absolute', left: '300px'
+                                }}>Position: {this.props.employee.position}</ln><br />
                                 <ln>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</ln><br /><br />
-                                {this.props.myManager ? <div><ln>Manager: {this.props.myManager.first_name + " " + this.props.myManager.last_name}   </ln>
+                                {this.props.myManager ? <div><ln style={{
+                                    position: 'absolute', left: '300px'
+                                }}>Manager: {this.props.myManager.first_name + " " + this.props.myManager.last_name}   </ln>
                                     <Popup trigger={<Button
+                                                        style={{
+                                                            position: 'absolute', left: '550px'
+                                                        }}
                                                         type="report"
                                                         label="Report"
                                                         className="p-button-raised p-button-rounded" />}
